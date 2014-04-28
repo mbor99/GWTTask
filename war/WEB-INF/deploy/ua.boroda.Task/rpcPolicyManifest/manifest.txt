@@ -1,0 +1,2 @@
+# Module ua.boroda.Task
+# RPC service class, partial path of RPC policy file
