@@ -1,35 +1,42 @@
 package ua.boroda.client;
 
-import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
+import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.ui.*;
 import com.google.gwt.view.client.DefaultSelectionEventManager;
+import com.google.gwt.view.client.NoSelectionModel;
 import com.google.gwt.view.client.SelectionModel;
-import com.google.gwt.view.client.SingleSelectionModel;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 
 public class Task implements EntryPoint {
-List<User> USERS;
 
-    public void createUsers() {
-        USERS = new LinkedList();
-        USERS.add(new User("1Vasya","Vasya","Pupkin","vp@mail.com",User.role.admin));
-        USERS.add(new User("2","Ivan","Petrov","ip@mail.com",User.role.user));
+    ArrayList<User> users = new ArrayList<User>();
+
+    IdColumn idCol;
+    NameColumn nameCol;
+    RoleColumn roleCol;
+
+    ListBox dropBox = new ListBox(false);
+    List<String> list =new LinkedList();
+    public void init(){
+        list.add(String.valueOf(User.role.admin));
+        list.add(String.valueOf(User.role.user));
     }
+
 
     @Override
     public void onModuleLoad() {
-        createUsers();
+        init();
+
+        users.add(new User("1", "Vasya", "Pupkin", "vp@mail.com", User.role.admin));
+        users.add(new User("2", "Ivan", "Petrov", "ip@mail.com", User.role.user));
 
         SplitLayoutPanel p = new SplitLayoutPanel();
         p.setPixelSize(800, 600);
@@ -40,9 +47,9 @@ List<User> USERS;
                 + "{ height: 5px !important; background: gray; }");
         StyleInjector.inject(".gwt-SplitLayoutPanel .gwt-SplitLayoutPanel-HDragger"
                 + "{ width: 5px !important; background: gray; }");
-        p.addNorth(new HTML("datagrid"), 250);
+        p.addNorth(grid(), 250);
         p.addWest(new HTML("info"), 400);
-        p.add(grid(USERS));
+        p.add(new HTML("additional field"));
 
 
         RootLayoutPanel rp = RootLayoutPanel.get();
@@ -51,75 +58,85 @@ List<User> USERS;
     }
 
 
-    public DataGrid grid(List<User> user) {
+    public DataGrid grid() {
         // Create a DataGrid.
-
         DataGrid dataGrid = new DataGrid<User>();
         dataGrid.setWidth("100%");
 
         dataGrid.setAutoHeaderRefreshDisabled(true);
-
         dataGrid.setEmptyTableWidget(new Label("empty datagrid"));
 
-
         // Add a selection model so we can select cells.
-        final SelectionModel<User> selectionModel = new SingleSelectionModel<User>();
+        final SelectionModel<User> selectionModel = new NoSelectionModel<User>();
         dataGrid.setSelectionModel(selectionModel, DefaultSelectionEventManager
                 .<User>createCheckboxManager());
 
-        // Initialize the columns.
-        initTableColumns(USERS, dataGrid);
 
-//        dataGrid.
-//        dataGrid.setRowData();
+        idCol = new IdColumn();
+        dataGrid.addColumn(idCol, "ID");
+        dataGrid.setColumnWidth(idCol, "25%");
 
-        // Add the CellList to the adapter in the database.
-//        ContactDatabase.get().addDataDisplay(dataGrid);
+        nameCol = new NameColumn();
+        dataGrid.addColumn(nameCol, "Name");
+        dataGrid.setColumnWidth(nameCol, "35%");
 
-        // Create the UiBinder.
-//        Binder uiBinder = GWT.create(.class);
-//        return uiBinder.createAndBindUi(this);
+        roleCol = new RoleColumn();
+        dataGrid.addColumn(roleCol, "Role");
+        dataGrid.setColumnWidth(roleCol, "40%");
+
+        dataGrid.setRowData(users);
+
 
         return dataGrid;
     }
 
-    private void initTableColumns(List<User> users, DataGrid dataGrid) {
 
-        // Id.
-        Column<User, String> idColumn = new Column<User, String>(new TextCell()) {
-            @Override
-            public String getValue(User object) {
-                return object.getId();
-            }
-        };
-
-        dataGrid.addColumn(idColumn, "Id");
-        dataGrid.setColumnWidth(idColumn, 60, Style.Unit.PCT);
-
-
-        // Name.
-        Column<User, String> nameColumn = new Column<User, String>(new TextCell()) {
-            @Override
-            public String getValue(User object) {
-                return object.getId();
-            }
-        };
-
-        dataGrid.addColumn(nameColumn, "Name");
-        dataGrid.setColumnWidth(nameColumn, 60, Style.Unit.PCT);
-
-
-        // Role.
-        Column<User, String> roleColumn = new Column<User, String>(new TextCell()) {
-            @Override
-            public String getValue(User object) {
-                return object.get();
-            }
-        };
-
-        dataGrid.addColumn(roleColumn, "Role");
-        dataGrid.setColumnWidth(roleColumn, 60, Style.Unit.PCT);
+    private class IdColumn extends TextColumn<User> {
+        @Override
+        public String getValue(User user) {
+            return user.getId();
+        }
     }
+
+    private class NameColumn extends TextColumn<User> {
+        @Override
+        public String getValue(User user) {
+            return user.getName();
+        }
+    }
+
+    private class RoleColumn extends TextColumn<User> {
+        @Override
+        public String getValue(User user) {
+            return String.valueOf(user.getR());
+        }
+    }
+
+
+//
+//    SelectionCell roleCell = new SelectionCell(list);
+//
+//    Column<User, SelectionCell> roleColumn = new Column<User, SelectionCell>(new HTMLTable.Cell)
+//    {
+////        @Override
+////        public Object getValue(Object p) {
+////            ListBox dropBox = new ListBox(false);
+////            dropBox.addItem(String.valueOf(User.role.admin));
+////            dropBox.addItem(String.valueOf(User.role.user));
+////            SelectionCell selectionCell= new SelectionCell((List<String>) dropBox) { };
+////            return selectionCell;
+////        }
+//
+//        @Override
+//        public SelectionCell getValue(User object) {
+//
+//            SelectionCell selectionCell= new SelectionCell((List<String>) dropBox) { };
+//
+//            return selectionCell;
+//        }
+//    };
+
+
 
 
 }
