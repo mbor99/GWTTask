@@ -115,25 +115,16 @@ public class Task implements EntryPoint {
         return dataGrid;
     }
 
-
     private class IdColumn extends TextColumn<User> {
         @Override
         public String getValue(User user) {
             return user.getId();
         }
     }
-
     private class NameColumn extends TextColumn<User> {
         @Override
         public String getValue(User user) {
             return user.getName();
-        }
-    }
-
-    private class RoleColumn extends TextColumn<User> {
-        @Override
-        public String getValue(User user) {
-            return String.valueOf(user.getR());
         }
     }
 }
