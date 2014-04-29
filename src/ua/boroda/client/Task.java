@@ -6,9 +6,8 @@ import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.view.client.DefaultSelectionEventManager;
-import com.google.gwt.view.client.NoSelectionModel;
-import com.google.gwt.view.client.SelectionModel;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SingleSelectionModel;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,23 +21,19 @@ public class Task implements EntryPoint {
     IdColumn idCol;
     NameColumn nameCol;
     RoleColumn roleCol;
+    Widget infoPanel=infoPanel();
+    SplitLayoutPanel p = new SplitLayoutPanel();
 
     ListBox dropBox = new ListBox(false);
     List<String> list =new LinkedList();
-    public void init(){
-        list.add(String.valueOf(User.role.admin));
-        list.add(String.valueOf(User.role.user));
-    }
-
 
     @Override
     public void onModuleLoad() {
-        init();
-
         users.add(new User("1", "Vasya", "Pupkin", "vp@mail.com", User.role.admin));
         users.add(new User("2", "Ivan", "Petrov", "ip@mail.com", User.role.user));
+        users.add(new User("3", "Fedor", "Sidorov", "fs@mail.com", User.role.user));
+        users.add(new User("4", "Petr", "Vasilyev", "pv@mail.com", User.role.admin));
 
-        SplitLayoutPanel p = new SplitLayoutPanel();
         p.setPixelSize(800, 600);
         p.getElement().getStyle().setBorderStyle(Style.BorderStyle.SOLID);
         p.getElement().getStyle().setBorderWidth(5, Style.Unit.PX);
@@ -47,14 +42,34 @@ public class Task implements EntryPoint {
                 + "{ height: 5px !important; background: gray; }");
         StyleInjector.inject(".gwt-SplitLayoutPanel .gwt-SplitLayoutPanel-HDragger"
                 + "{ width: 5px !important; background: gray; }");
-        p.addNorth(grid(), 250);
-        p.addWest(new HTML("info"), 400);
-        p.add(new HTML("additional field"));
 
+        p.addNorth(grid(), 250);
+        p.addWest(infoPanel, 400);
+        p.add(new HTML("additional field"));
 
         RootLayoutPanel rp = RootLayoutPanel.get();
         rp.add(p);
 
+    }
+
+    private Widget infoPanel() {
+        VerticalPanel infoPanel = new VerticalPanel();
+        Label emailInfo=new Label("Email : ");
+        Label surnameInfo=new Label("Surname : ");
+        infoPanel.add(emailInfo);
+        infoPanel.setSpacing(20);
+        infoPanel.add(surnameInfo);
+        return infoPanel;
+    }
+
+    private Widget infoPanel(String email,String surname) {
+        VerticalPanel infoPanel = new VerticalPanel();
+        Label emailInfo=new Label("Email : "+email);
+        Label surnameInfo=new Label("Surname : "+surname);
+        infoPanel.add(emailInfo);
+        infoPanel.setSpacing(20);
+        infoPanel.add(surnameInfo);
+        return infoPanel;
     }
 
 
@@ -66,10 +81,21 @@ public class Task implements EntryPoint {
         dataGrid.setAutoHeaderRefreshDisabled(true);
         dataGrid.setEmptyTableWidget(new Label("empty datagrid"));
 
-        // Add a selection model so we can select cells.
-        final SelectionModel<User> selectionModel = new NoSelectionModel<User>();
-        dataGrid.setSelectionModel(selectionModel, DefaultSelectionEventManager
-                .<User>createCheckboxManager());
+
+        final SingleSelectionModel<User> selectionModel =
+                new SingleSelectionModel<User>();
+        dataGrid.setSelectionModel(selectionModel);
+        selectionModel. addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+            public void onSelectionChange( SelectionChangeEvent event) {
+                User selected = selectionModel. getSelectedObject();
+                if (selected != null) {
+                    infoPanel = infoPanel(selected.getEmail(), selected.getSurname());
+                    p.clear();
+                    p.addNorth(grid(), 250);
+                    p.addWest(infoPanel,400);
+                    p.add(new HTML("additional field"));
+                    }
+            } });
 
 
         idCol = new IdColumn();
@@ -85,8 +111,6 @@ public class Task implements EntryPoint {
         dataGrid.setColumnWidth(roleCol, "40%");
 
         dataGrid.setRowData(users);
-
-
         return dataGrid;
     }
 
@@ -112,11 +136,11 @@ public class Task implements EntryPoint {
         }
     }
 
-
+//    public void rolelist(){
 //
 //    SelectionCell roleCell = new SelectionCell(list);
 //
-//    Column<User, SelectionCell> roleColumn = new Column<User, SelectionCell>(new HTMLTable.Cell)
+//    Column<User, Object> roleColumn = new Column<User, Object>(roleCell)
 //    {
 ////        @Override
 ////        public Object getValue(Object p) {
@@ -134,7 +158,9 @@ public class Task implements EntryPoint {
 //
 //            return selectionCell;
 //        }
-//    };
+//    };//
+//    }
+
 
 
 
