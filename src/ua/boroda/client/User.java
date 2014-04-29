@@ -1,6 +1,6 @@
 package ua.boroda.client;
 
-public class User {
+public class User extends Object {
 
     public User(String id, String name, String surname, String email, role r) {
         this.id = id;

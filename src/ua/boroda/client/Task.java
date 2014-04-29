@@ -1,8 +1,10 @@
 package ua.boroda.client;
 
+import com.google.gwt.cell.client.SelectionCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.StyleInjector;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.*;
@@ -15,20 +17,19 @@ import java.util.List;
 
 
 public class Task implements EntryPoint {
-
     ArrayList<User> users = new ArrayList<User>();
-
     IdColumn idCol;
     NameColumn nameCol;
-    RoleColumn roleCol;
-    Widget infoPanel=infoPanel();
+    Widget infoPanel = infoPanel();
     SplitLayoutPanel p = new SplitLayoutPanel();
-
-    ListBox dropBox = new ListBox(false);
-    List<String> list =new LinkedList();
+    DataGrid<User> dataGrid;
+    List<String> list = new LinkedList();
 
     @Override
     public void onModuleLoad() {
+        list.add(0, String.valueOf(User.role.admin));
+        list.add(1, String.valueOf(User.role.user));
+
         users.add(new User("1", "Vasya", "Pupkin", "vp@mail.com", User.role.admin));
         users.add(new User("2", "Ivan", "Petrov", "ip@mail.com", User.role.user));
         users.add(new User("3", "Fedor", "Sidorov", "fs@mail.com", User.role.user));
@@ -49,23 +50,22 @@ public class Task implements EntryPoint {
 
         RootLayoutPanel rp = RootLayoutPanel.get();
         rp.add(p);
-
     }
 
     private Widget infoPanel() {
         VerticalPanel infoPanel = new VerticalPanel();
-        Label emailInfo=new Label("Email : ");
-        Label surnameInfo=new Label("Surname : ");
+        Label emailInfo = new Label("Email : ");
+        Label surnameInfo = new Label("Surname : ");
         infoPanel.add(emailInfo);
         infoPanel.setSpacing(20);
         infoPanel.add(surnameInfo);
         return infoPanel;
     }
 
-    private Widget infoPanel(String email,String surname) {
+    private Widget infoPanel(String email, String surname) {
         VerticalPanel infoPanel = new VerticalPanel();
-        Label emailInfo=new Label("Email : "+email);
-        Label surnameInfo=new Label("Surname : "+surname);
+        Label emailInfo = new Label("Email : " + email);
+        Label surnameInfo = new Label("Surname : " + surname);
         infoPanel.add(emailInfo);
         infoPanel.setSpacing(20);
         infoPanel.add(surnameInfo);
@@ -75,40 +75,41 @@ public class Task implements EntryPoint {
 
     public DataGrid grid() {
         // Create a DataGrid.
-        DataGrid dataGrid = new DataGrid<User>();
+        dataGrid = new DataGrid<User>();
         dataGrid.setWidth("100%");
-
         dataGrid.setAutoHeaderRefreshDisabled(true);
         dataGrid.setEmptyTableWidget(new Label("empty datagrid"));
-
 
         final SingleSelectionModel<User> selectionModel =
                 new SingleSelectionModel<User>();
         dataGrid.setSelectionModel(selectionModel);
-        selectionModel. addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-            public void onSelectionChange( SelectionChangeEvent event) {
-                User selected = selectionModel. getSelectedObject();
+        selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+            public void onSelectionChange(SelectionChangeEvent event) {
+                User selected = selectionModel.getSelectedObject();
                 if (selected != null) {
-                    infoPanel = infoPanel(selected.getEmail(), selected.getSurname());
                     p.clear();
                     p.addNorth(grid(), 250);
-                    p.addWest(infoPanel,400);
+                    p.addWest(infoPanel(selected.getEmail(), selected.getSurname()), 400);
                     p.add(new HTML("additional field"));
-                    }
-            } });
-
+                }
+            }
+        });
 
         idCol = new IdColumn();
         dataGrid.addColumn(idCol, "ID");
         dataGrid.setColumnWidth(idCol, "25%");
-
         nameCol = new NameColumn();
         dataGrid.addColumn(nameCol, "Name");
         dataGrid.setColumnWidth(nameCol, "35%");
-
-        roleCol = new RoleColumn();
-        dataGrid.addColumn(roleCol, "Role");
-        dataGrid.setColumnWidth(roleCol, "40%");
+        SelectionCell categoryCell = new SelectionCell(list);
+        Column<User, String> categoryColumn = new Column<User, String>(categoryCell) {
+            @Override
+            public String getValue(User object) {
+                return String.valueOf(object.getR());
+            }
+        };
+        dataGrid.addColumn(categoryColumn, "Role");
+        dataGrid.setColumnWidth(categoryColumn, "40%");
 
         dataGrid.setRowData(users);
         return dataGrid;
@@ -135,34 +136,4 @@ public class Task implements EntryPoint {
             return String.valueOf(user.getR());
         }
     }
-
-//    public void rolelist(){
-//
-//    SelectionCell roleCell = new SelectionCell(list);
-//
-//    Column<User, Object> roleColumn = new Column<User, Object>(roleCell)
-//    {
-////        @Override
-////        public Object getValue(Object p) {
-////            ListBox dropBox = new ListBox(false);
-////            dropBox.addItem(String.valueOf(User.role.admin));
-////            dropBox.addItem(String.valueOf(User.role.user));
-////            SelectionCell selectionCell= new SelectionCell((List<String>) dropBox) { };
-////            return selectionCell;
-////        }
-//
-//        @Override
-//        public SelectionCell getValue(User object) {
-//
-//            SelectionCell selectionCell= new SelectionCell((List<String>) dropBox) { };
-//
-//            return selectionCell;
-//        }
-//    };//
-//    }
-
-
-
-
-
 }
