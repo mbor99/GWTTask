@@ -7,9 +7,9 @@
     </list>
     <ignored path="Test2.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Task.java" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398780284535" ignored="false" />
+    <file path="/Task.java" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398782427814" ignored="false" />
     <file path="/User.java" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398778376185" ignored="false" />
-    <file path="/Dummy.txt" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398780685342" ignored="false" />
+    <file path="/Dummy.txt" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398780754395" ignored="false" />
     <file path="L:/Education/GWT/gwt-example/src/com/mySampleApplication/client/MySampleApplication.java" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398759905414" ignored="false" />
     <file path="/fragment.java" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398759566148" ignored="false" />
     <file path="$PROJECT_DIR$/war/WEB-INF/deploy/ua.boroda.Task/rpcPolicyManifest/manifest.txt" changelist="e211b348-f6f8-4e28-930b-51caa55494ab" time="1398767892241" ignored="false" />
@@ -77,24 +77,15 @@
       <file leaf-file-name="Task.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/boroda/client/Task.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="4" selection-start="4502" selection-end="4502" vertical-scroll-proportion="0.592686">
+            <state line="91" column="70" selection-start="3572" selection-end="3572" vertical-scroll-proportion="1.4043528">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#687#693#0" expanded="true" />
-                <element signature="e#3179#3185#0" expanded="true" />
-                <element signature="e#3290#3772#0" expanded="true" />
-                <element signature="e#3761#3762#0" expanded="true" />
-                <element signature="e#4144#4158#0" expanded="true" />
+                <element signature="e#686#692#0" expanded="true" />
+                <element signature="e#2961#2967#0" expanded="true" />
+                <element signature="e#3072#3413#0" expanded="true" />
+                <element signature="e#3402#3403#0" expanded="true" />
+                <element signature="e#3785#3799#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Column.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://L:/Education/gwt-2.6.0/gwt-user.jar!/com/google/gwt/user/cellview/client/Column.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="2" selection-start="3213" selection-end="3262" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,10 +142,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="637" />
-    <option name="y" value="24" />
-    <option name="width" value="1123" />
-    <option name="height" value="976" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -480,11 +471,15 @@
       <created>1398780698164</created>
       <updated>1398780698164</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add droplist &quot;role&quot;">
+      <created>1398780761516</created>
+      <updated>1398780761516</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="637" y="24" width="1123" height="976" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -507,7 +502,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28652215" sideWeight="0.67074525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16221985" sideWeight="0.67074525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -557,7 +552,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add droplist role" />
+    <option name="LAST_COMMIT_MESSAGE" value="add droplist &quot;role&quot;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -574,6 +569,7 @@
     <MESSAGE value="table" />
     <MESSAGE value="add info panel" />
     <MESSAGE value="add droplist role" />
+    <MESSAGE value="add droplist &quot;role&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -583,27 +579,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ua/boroda/Task.gwt.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="10" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/boroda/client/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#687#693#0" expanded="true" />
-            <element signature="e#3179#3185#0" expanded="true" />
-            <element signature="e#3290#3772#0" expanded="true" />
-            <element signature="e#3761#3762#0" expanded="true" />
-            <element signature="e#4144#4158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/Task.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
@@ -623,11 +598,11 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#687#693#0" expanded="true" />
-            <element signature="e#3179#3185#0" expanded="true" />
-            <element signature="e#3290#3772#0" expanded="true" />
-            <element signature="e#3761#3762#0" expanded="true" />
-            <element signature="e#4144#4158#0" expanded="true" />
+            <element signature="e#686#692#0" expanded="true" />
+            <element signature="e#2961#2967#0" expanded="true" />
+            <element signature="e#3072#3413#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3785#3799#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,23 +670,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://L:/Education/gwt-2.6.0/gwt-user.jar!/com/google/gwt/user/client/ui/UIObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="556" column="44" selection-start="19285" selection-end="19285" vertical-scroll-proportion="0.33333334">
+          <folding>
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1385029032000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://L:/Education/gwt-2.6.0/gwt-user.jar!/com/google/gwt/user/cellview/client/Column.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="2" selection-start="3213" selection-end="3262" vertical-scroll-proportion="0.0">
+        <state line="111" column="2" selection-start="3213" selection-end="3262" vertical-scroll-proportion="-1.9583858">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://L:/Education/gwt-2.6.0/gwt-user.jar!/com/google/gwt/user/client/ui/Label.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="387" column="14" selection-start="13579" selection-end="13579" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/boroda/client/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="4" selection-start="4502" selection-end="4502" vertical-scroll-proportion="0.592686">
+        <state line="91" column="70" selection-start="3572" selection-end="3572" vertical-scroll-proportion="1.4043528">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#687#693#0" expanded="true" />
-            <element signature="e#3179#3185#0" expanded="true" />
-            <element signature="e#3290#3772#0" expanded="true" />
-            <element signature="e#3761#3762#0" expanded="true" />
-            <element signature="e#4144#4158#0" expanded="true" />
+            <element signature="e#686#692#0" expanded="true" />
+            <element signature="e#2961#2967#0" expanded="true" />
+            <element signature="e#3072#3413#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3785#3799#0" expanded="true" />
           </folding>
         </state>
       </provider>
